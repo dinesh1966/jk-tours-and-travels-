@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - JK Tours & Travels</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: var(--off-white);
+    }
+    .gallery-hero {
+      position: relative;
+      height: 40vh;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1a365d 100%);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+    .gallery-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('hero_bg.png') center/cover no-repeat;
+      opacity: 0.2;
+      animation: zoomIn 20s infinite alternate;
+    }
+    @keyframes zoomIn {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .gallery-hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInDown 1s ease-out;
+    }
+    .gallery-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .gallery-hero p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+    
+    .gallery-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      column-count: 3;
+      column-gap: 20px;
+    }
+    
+    @media (max-width: 900px) {
+      .gallery-container { column-count: 2; }
+    }
+    @media (max-width: 600px) {
+      .gallery-container { column-count: 1; }
+    }
+    
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s ease;
+    }
+    .gallery-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      color: white;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-overlay h3 {
+      font-size: 1.2rem;
+      margin: 0 0 5px 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .gallery-overlay p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: var(--gold);
+      transform: translateY(20px);
+      transition: transform 0.3s ease 0.1s;
+    }
+    
+    .gallery-item:hover .gallery-overlay h3,
+    .gallery-item:hover .gallery-overlay p {
+      transform: translateY(0);
+    }
+    
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link" id="logo">
+        <img src="logo.png" alt="JK Tours & Travels" class="logo-img">
+      </a>
+      <div class="nav-right">
+        <a href="index.html" class="book-now-btn">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <h1>Our Memories</h1>
+      <p>Capturing beautiful moments from around the world</p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-container" id="galleryContainer">
+    <!-- Gallery Items will be staggered animated -->
+    <div class="gallery-item">
+      <img src="hero_bg.png" alt="Gallery Image 1">
+      <div class="gallery-overlay">
+        <h3>Sunset Vibes</h3>
+        <p>Maldives</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="coimbatore_hero.png" alt="Gallery Image 2">
+      <div class="gallery-overlay">
+        <h3>Adiyogi Statue</h3>
+        <p>Coimbatore</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="ooty_hero.png" alt="Gallery Image 3">
+      <div class="gallery-overlay">
+        <h3>Misty Hills</h3>
+        <p>Ooty</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="kodaikanal_hero.png" alt="Gallery Image 4">
+      <div class="gallery-overlay">
+        <h3>Serene Lakes</h3>
+        <p>Kodaikanal</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="southindia_hero.png" alt="Gallery Image 5">
+      <div class="gallery-overlay">
+        <h3>Temple Architecture</h3>
+        <p>South India</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="kerala_hero.png" alt="Gallery Image 6">
+      <div class="gallery-overlay">
+        <h3>Backwaters</h3>
+        <p>Kerala</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="karnataka_hero.png" alt="Gallery Image 7">
+      <div class="gallery-overlay">
+        <h3>Heritage Ruins</h3>
+        <p>Karnataka</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="goa_hero.png" alt="Gallery Image 8">
+      <div class="gallery-overlay">
+        <h3>Tropical Beaches</h3>
+        <p>Goa</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="pondicherry_hero.png" alt="Gallery Image 9">
+      <div class="gallery-overlay">
+        <h3>French Quarter</h3>
+        <p>Pondicherry</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple script to stagger animations on scroll/load
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll('.gallery-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Stagger animation based on index
+            setTimeout(() => {
+              entry.target.classList.add('show');
+            }, index * 150); // 150ms delay between each
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      items.forEach(item => observer.observe(item));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kodaikanal Tour Places - JK Tours & Travels</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .dest-hero {
+      position: relative;
+      height: 65vh;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .dest-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .dest-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,22,40,0.5) 0%, rgba(10,22,40,0.85) 100%);
+      z-index: 1;
+    }
+    .dest-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+    }
+    .dest-hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+    .dest-hero-content h1 span {
+      font-family: 'Dancing Script', cursive;
+      color: #f5a623;
+      display: block;
+      font-size: clamp(42px, 7vw, 76px);
+    }
+    .dest-hero-content p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .dest-hero .breadcrumb {
+      margin-top: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+    .dest-hero .breadcrumb a {
+      color: #f5a623;
+      text-decoration: none;
+    }
+    .dest-hero .breadcrumb a:hover { text-decoration: underline; }
+    .places-section { padding: 80px 0; background: var(--off-white); }
+    .places-section .section-title { text-align: center; margin-bottom: 48px; }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link" id="logo"><img src="logo.png" alt="JK Tours & Travels" class="logo-img"></a>
+      <div class="nav-right">
+        <a href="index.html" class="book-now-btn">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="dest-hero">
+    <img src="kodaikanal_hero.png" alt="Kodaikanal">
+    <div class="dest-hero-content">
+      <h1>Explore <span>Kodaikanal</span></h1>
+      <p>Princess of Hill Stations — Lakes, Forests & Waterfalls</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#destinations">Destinations</a> / Kodaikanal</div>
+    </div>
+  </section>
+
+  <!-- Tour Places Grid -->
+  <section class="places-section">
+    <div class="container">
+      <h2 class="section-title"><strong>Top Tour Places</strong></h2>
+      <div class="packages-grid">
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Kodaikanal Lake" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Kodaikanal Lake</h3>
+            <p>Famous star-shaped man-made lake surrounded by lush greenery, perfect for boating.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Coaker's Walk" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Coaker's Walk</h3>
+            <p>A scenic paved pedestrian path overlooking the plains below with breathtaking views.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Bryant Park" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Bryant Park</h3>
+            <p>A beautifully maintained botanical park with exotic flowers and rare plant species.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Pillar Rocks" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Pillar Rocks</h3>
+            <p>Three giant rock pillars standing tall at 400 feet high with misty surroundings.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Guna Caves" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Guna Caves</h3>
+            <p>Also known as Devil's Kitchen, these mysterious caves are surrounded by dense forest.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Pine Forest" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Pine Forest</h3>
+            <p>A serene dense pine forest ideal for nature walks and photography.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Silver Cascade Falls" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Silver Cascade Falls</h3>
+            <p>A stunning 180-foot waterfall cascading down rocky cliffs on the way to Kodaikanal.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="kodaikanal_hero.png" alt="Moir Point" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Moir Point</h3>
+            <p>A scenic viewpoint offering panoramic views of the valley and surrounding hills.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+        <div class="package-card">
+          <div class="package-image"><img src="green_valley.jpg" alt="Green Valley View" loading="lazy"></div>
+          <div class="package-content">
+            <h3 class="package-title">Green Valley View</h3>
+            <p>A mesmerizing viewpoint overlooking the deep valley covered in lush green forest.</p>
+            <div class="package-footer"><button class="package-book-btn" style="width:100%; margin-top:10px;">Book Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
