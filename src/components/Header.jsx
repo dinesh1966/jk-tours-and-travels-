@@ -52,7 +52,7 @@ const Header = () => {
     <header id="header" className={scrolled ? 'scrolled' : ''}>
       <div className="container nav-container">
         <Link to="/" className="logo-link" id="logo">
-          <img src="/logo.png" alt="JK Tours & Travels" className="logo-img" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels" className="logo-img" />
         </Link>
 
         <nav>

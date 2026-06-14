@@ -22,7 +22,7 @@ const DestCard = ({ dest }) => {
         style={{ cursor: 'pointer' }}
       >
         <div className="dest-image-wrapper">
-          <img src={`/${dest.image}`} alt={dest.title} loading="lazy" decoding="async" />
+          <img src={`${import.meta.env.BASE_URL}${dest.image}`} alt={dest.title} loading="lazy" decoding="async" />
           {dest.badge && (
             <div className="dest-badge-left" style={{ background: dest.badge.color, color: dest.badge.textColor || 'white' }}>
               <span>{dest.badge.text.split(' ')[0]}</span> {dest.badge.text.split(' ').slice(1).join(' ')}

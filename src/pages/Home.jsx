@@ -80,7 +80,7 @@ const Home = () => {
         <div className="hero-bg">
           {videoLoaded && (
             <video autoPlay loop muted playsInline id="hero-bg-video">
-              <source src="/Adiyogi_coimbatore.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}Adiyogi_coimbatore.mp4`} type="video/mp4" />
             </video>
           )}
           <div className="hero-overlay"></div>
@@ -330,7 +330,7 @@ const Home = () => {
         <div className="container">
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '50px' }}>
             <div style={{ flex: 1, minWidth: '300px', position: 'relative' }}>
-              <img src="/hero_bg.png" alt="About JK Travels" loading="lazy" decoding="async"
+              <img src={`${import.meta.env.BASE_URL}hero_bg.png`} alt="About JK Travels" loading="lazy" decoding="async"
                 style={{ width: '100%', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover', aspectRatio: '4/3' }} />
             </div>
             <div style={{ flex: 1.2, minWidth: '300px' }}>

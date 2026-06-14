@@ -33,7 +33,7 @@ const PackageCard = ({ pkg }) => {
       <div className="package-card" ref={tiltRef}>
         {pkg.badge && <div className="package-badge">{pkg.badge}</div>}
         <div className="package-image">
-          <img src={`/${pkg.image}`} alt={pkg.title} loading="lazy" decoding="async" />
+          <img src={`${import.meta.env.BASE_URL}${pkg.image}`} alt={pkg.title} loading="lazy" decoding="async" />
         </div>
         <div className="package-content">
           <h3 className="package-title">{pkg.title}</h3>

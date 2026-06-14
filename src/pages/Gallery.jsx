@@ -47,7 +47,7 @@ const Gallery = () => {
       <header id="header" className="scrolled" style={{ position: 'relative' }}>
         <div className="container nav-container">
           <Link to="/" className="logo-link" id="logo">
-            <img src="/logo.png" alt="JK Tours & Travels" className="logo-img" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels" className="logo-img" />
           </Link>
           <div className="nav-right">
             <Link to="/" className="book-now-btn">← Back to Home</Link>
@@ -67,7 +67,7 @@ const Gallery = () => {
       <div className="gallery-container" id="galleryContainer">
         {galleryItems.map((item, index) => (
           <div className="gallery-item" key={index}>
-            <img src={`/${item.img}`} alt={item.title} loading="lazy" />
+            <img src={`${import.meta.env.BASE_URL}${item.img}`} alt={item.title} loading="lazy" />
             <div className="gallery-overlay">
               <h3>{item.title}</h3>
               <p>{item.desc}</p>

@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="footer-brand">
             <div className="footer-logo">
               <Link to="/">
-                <img src="/logo.png" alt="JK Tours & Travels" loading="lazy" style={{ maxWidth: '180px', height: 'auto' }} />
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels" loading="lazy" style={{ maxWidth: '180px', height: 'auto' }} />
               </Link>
             </div>
             <p className="footer-tagline">Your World, Our Journey.<br />Discover. Explore. Experience.</p>
