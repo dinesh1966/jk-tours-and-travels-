@@ -121,10 +121,10 @@ export const packagesData = [
     priceType: 'Luxury Bus'
   },
   {
-    id: 'train',
-    title: 'Train Ticket Booking',
-    image: 'train_transport.png',
-    meta: '🚆 All Classes Available',
-    priceType: 'IRCTC'
+    id: 'room',
+    title: 'Room Booking',
+    image: 'room_booking.jpg',
+    meta: '🏨 Budget & Luxury Rooms',
+    priceType: 'Hotels'
   }
 ];

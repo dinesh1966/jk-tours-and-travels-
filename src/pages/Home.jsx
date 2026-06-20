@@ -50,12 +50,20 @@ const Home = () => {
   useScrollReveal();
   const heroRef = useRef(null);
   useParallax(heroRef);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const heroImages = [
+    `${import.meta.env.BASE_URL}esha.png`,
+    `${import.meta.env.BASE_URL}maruthamalai.png`,
+    `${import.meta.env.BASE_URL}kovai_kutralam.png`,
+    `${import.meta.env.BASE_URL}monkeyfalls.png`,
+    `${import.meta.env.BASE_URL}valparai.png`
+  ];
 
   useEffect(() => {
-    // Load video after a short delay so it doesn't block initial page rendering
-    const timer = setTimeout(() => setVideoLoaded(true), 50);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleSearch = () => {
@@ -78,12 +86,26 @@ const Home = () => {
       {/* ═══════════ HERO SECTION ═══════════ */}
       <section className="hero" id="home" ref={heroRef}>
         <div className="hero-bg">
-          {videoLoaded && (
-            <video autoPlay loop muted playsInline id="hero-bg-video">
-              <source src={`${import.meta.env.BASE_URL}Adiyogi_coimbatore.mp4`} type="video/mp4" />
-            </video>
-          )}
-          <div className="hero-overlay"></div>
+          {heroImages.map((img, index) => (
+            <div
+              key={index}
+              className={`hero-bg-slide ${index === currentImageIndex ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${img})`,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: index === currentImageIndex ? 1 : 0,
+                transition: 'opacity 1.5s ease-in-out',
+                zIndex: 0
+              }}
+            />
+          ))}
+          <div className="hero-overlay" style={{ zIndex: 1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}></div>
         </div>
 
         <div className="hero-container">
@@ -183,16 +205,17 @@ const Home = () => {
               </div>
               <div className="search-text-content">
                 <span className="search-label">TRAVELERS</span>
-                <span className="search-placeholder" id="travelersPlaceholder">2 Travelers, 1 Room</span>
+                <span className="search-placeholder" id="travelersPlaceholder">2 Travelers</span>
                 <select className="hidden-select" id="travelersSelect" style={{position:'absolute',opacity:0,width:0,height:0}}
                   onChange={(e) => { document.getElementById('travelersPlaceholder').textContent = e.target.value; }}>
-                  <option value="1 Traveler, 1 Room">1 Traveler, 1 Room</option>
-                  <option value="2 Travelers, 1 Room" defaultValue>2 Travelers, 1 Room</option>
-                  <option value="2 Travelers, 2 Rooms">2 Travelers, 2 Rooms</option>
-                  <option value="4 Travelers, 2 Rooms">4 Travelers, 2 Rooms</option>
-                  <option value="Family Suite (5+)">Family Suite (5+)</option>
+                  <option value="1 Traveler">1 Traveler</option>
+                  <option value="2 Travelers" defaultValue>2 Travelers</option>
+                  <option value="4 Travelers">4 Travelers</option>
+                  <option value="6 Travelers">6 Travelers</option>
+                  <option value="8 Travelers">8 Travelers</option>
+                  <option value="10 Travelers">10 Travelers</option>
                 </select>
-              </div>
+              </div>  
             </div>
 
             <button className="search-btn" aria-label="Search" onClick={handleSearch}>
@@ -330,18 +353,15 @@ const Home = () => {
         <div className="container">
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '50px' }}>
             <div style={{ flex: 1, minWidth: '300px', position: 'relative' }}>
-              <img src={`${import.meta.env.BASE_URL}hero_bg.png`} alt="About JK Travels" loading="lazy" decoding="async"
-                style={{ width: '100%', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover', aspectRatio: '4/3' }} />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels Logo" loading="lazy" decoding="async"
+                style={{ width: '100%', borderRadius: '20px', objectFit: 'contain', aspectRatio: '4/3', background: 'linear-gradient(135deg, #0a1628 0%, #1a2f5e 50%, #0d2044 100%)', padding: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(212,175,55,0.25)', filter: 'drop-shadow(0 6px 20px rgba(212,175,55,0.3))' }} />
             </div>
             <div style={{ flex: 1.2, minWidth: '300px' }}>
               <span style={{ color: 'var(--gold)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase' }}>Discover Our Story</span>
               <h2 className="section-title" style={{ textAlign: 'left', margin: '15px 0 25px' }}><strong>About JK Tours & Travels</strong></h2>
               <p style={{ fontSize: '16px', color: '#555', lineHeight: 1.8, marginBottom: '20px' }}>
-                Welcome to JK Tours & Travels, your trusted partner in crafting unforgettable journeys. With years of experience in the travel industry, we specialize in offering personalized tour packages, from serene hill stations to vibrant coastal getaways. Our mission is to provide seamless, comfortable, and memorable travel experiences for every customer.
-              </p>
-              <p style={{ fontSize: '16px', color: '#555', lineHeight: 1.8 }}>
-                Whether you're looking for a relaxing family vacation, an adventurous getaway, or a romantic honeymoon, we are here to plan the perfect trip tailored to your needs. Discover the world with us and create memories that last a lifetime.
-              </p>
+                Welcome to JK Tours & Travels, your trusted partner in crafting unforgettable journeys. With years of experience in the travel industry, we specialize in offering personalized tour packages, from serene hill stations to vibrant coastal getaways. Our mission is to provide seamless, comfortable, and memorable travel experiences for every customer.Whether you're looking for a relaxing family vacation, an adventurous getaway, or a romantic honeymoon, we are here to plan the perfect trip tailored to your needs. Discover the world with us and create memories that last a lifetime.</p>
+
             </div>
           </div>
         </div>
