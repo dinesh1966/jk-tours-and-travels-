@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import logoImg from '../assets/bg fina one.png';
 import { useParallax } from '../hooks/useParallax';
 import { useCounter } from '../hooks/useCounter';
 import { useTilt } from '../hooks/useTilt';
@@ -52,11 +53,12 @@ const Home = () => {
   useParallax(heroRef);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
-    `${import.meta.env.BASE_URL}esha.png`,
-    `${import.meta.env.BASE_URL}maruthamalai.png`,
-    `${import.meta.env.BASE_URL}kovai_kutralam.png`,
-    `${import.meta.env.BASE_URL}monkeyfalls.png`,
-    `${import.meta.env.BASE_URL}valparai.png`
+    `${import.meta.env.BASE_URL}hero section/bg1.png`,
+    `${import.meta.env.BASE_URL}hero section/bg2.png`,
+    `${import.meta.env.BASE_URL}hero section/bg3.png`,
+    `${import.meta.env.BASE_URL}hero section/bg4.png`,
+    `${import.meta.env.BASE_URL}hero section/bg5.png`,
+    `${import.meta.env.BASE_URL}hero section/bg6.png`
   ];
 
   useEffect(() => {
@@ -91,7 +93,7 @@ const Home = () => {
               key={index}
               className={`hero-bg-slide ${index === currentImageIndex ? 'active' : ''}`}
               style={{
-                backgroundImage: `url(${img})`,
+                backgroundImage: `url("${img}")`,
                 position: 'absolute',
                 top: 0,
                 left: 0,
@@ -351,12 +353,12 @@ const Home = () => {
       {/* ═══════════ ABOUT US ═══════════ */}
       <section className="about-section" id="about" style={{ padding: '80px 0 40px', background: 'var(--off-white)' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '50px' }}>
-            <div style={{ flex: 1, minWidth: '300px', position: 'relative' }}>
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels Logo" loading="lazy" decoding="async"
+          <div className="about-flex-container">
+            <div className="about-img-col">
+              <img src={logoImg} alt="JK Tours & Travels Logo" loading="lazy" decoding="async"
                 style={{ width: '100%', borderRadius: '20px', objectFit: 'contain', aspectRatio: '4/3', background: 'linear-gradient(135deg, #0a1628 0%, #1a2f5e 50%, #0d2044 100%)', padding: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(212,175,55,0.25)', filter: 'drop-shadow(0 6px 20px rgba(212,175,55,0.3))' }} />
             </div>
-            <div style={{ flex: 1.2, minWidth: '300px' }}>
+            <div className="about-text-col">
               <span style={{ color: 'var(--gold)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase' }}>Discover Our Story</span>
               <h2 className="section-title" style={{ textAlign: 'left', margin: '15px 0 25px' }}><strong>About JK Tours & Travels</strong></h2>
               <p style={{ fontSize: '16px', color: '#555', lineHeight: 1.8, marginBottom: '20px' }}>

@@ -137,7 +137,7 @@ header.scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 88px;
   gap: 16px;
 }
 
@@ -147,6 +147,7 @@ header.scrolled {
   align-items: center;
   gap: 0;
   flex-shrink: 0;
+  margin-left: -12px;
 }
 
 .logo-emblem {
@@ -415,7 +416,7 @@ header.scrolled {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding-top: 72px;
+  padding-top: 88px;
 }
 
 .hero-bg {
@@ -455,19 +456,30 @@ header.scrolled {
       rgba(10, 22, 40, 0.35) 100%);
 }
 
-/* Header Logo Styling override */
-.logo-img {
-  height: 52px;
-  width: auto;
+.logo-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
+  background: #ffffff;
   border: 1.5px solid var(--gold);
   box-shadow: 0 4px 16px rgba(245, 166, 35, 0.25);
+  overflow: hidden;
   transition: var(--transition);
 }
 
-.logo-img:hover {
+.logo-circle-container:hover {
   transform: scale(1.05) rotate(5deg);
   box-shadow: 0 8px 24px rgba(245, 166, 35, 0.4);
+}
+
+.logo-img {
+  height: 52px;
+  width: 52px;
+  object-fit: contain;
+  transition: var(--transition);
 }
 
 /* Floating 3D and Parallax Elements */
@@ -3670,4 +3682,647 @@ footer {
 .bm-success p {
   color: #777;
   font-size: 15px;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* ═══════════ RESPONSIVE OVERRIDES (MOBILE & TABLET) ═════════ */
+/* ════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  /* --- Navigation & Header --- */
+  .nav-container {
+    height: 70px !important;
+    padding: 0 16px !important;
+  }
+  header.scrolled {
+    background: #0a1628 !important;
+  }
+  .logo-link {
+    margin-left: 0 !important;
+  }
+  .nav-phone {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-right: -8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .nav-menu {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-width: 85%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a1628 0%, #162a45 100%);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 999;
+    padding: 90px 24px 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 16px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    animation: none !important;
+  }
+  .nav-menu.mobile-open {
+    transform: translateX(0) !important;
+  }
+  .nav-menu .nav-item {
+    width: 100% !important;
+  }
+  .nav-menu .nav-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px !important;
+    padding: 12px 16px;
+    color: white !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    letter-spacing: 0.5px;
+    text-shadow: none;
+  }
+  .nav-menu .nav-item a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--gold) !important;
+  }
+  .nav-menu .nav-item.active a::after {
+    display: none !important;
+  }
+  .nav-menu .nav-item.active a {
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+  }
+  
+  /* Dropdowns on Mobile/Tablet */
+  .dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    padding: 0 !important;
+    margin: 4px 0 0 0 !important;
+    display: none !important;
+    border-left: 2px solid rgba(245, 166, 35, 0.25) !important;
+    margin-left: 12px !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+  .dropdown-menu.show-mobile {
+    display: block !important;
+  }
+  .dropdown-menu li {
+    width: 100%;
+  }
+  .dropdown-menu li a {
+    font-size: 13.5px !important;
+    padding: 10px 16px !important;
+    text-transform: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dropdown-menu li a:hover {
+    color: var(--gold) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+  .dropdown-submenu .dropdown-menu {
+    margin-left: 12px !important;
+    border-left: 1px dashed rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* --- Destinations section banner --- */
+  .dest-banner {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 32px !important;
+    background-position: 15% center !important;
+    padding: 30px 20px !important;
+  }
+  .dest-banner-left {
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dest-banner-desc {
+    max-width: 500px;
+  }
+
+  /* --- About Section --- */
+  .about-flex-container {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 30px !important;
+  }
+  .about-img-col,
+  .about-text-col {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+  .about-text-col {
+    text-align: center;
+  }
+  .about-text-col h2.section-title {
+    text-align: center !important;
+  }
+
+  /* --- Booking & Contact --- */
+  .contact-wrapper {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .booking-card,
+  .newsletter-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+    box-sizing: border-box;
+  }
+}
+
+/* ═══════════ TABLET ONLY (768px – 1024px) ═══════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* --- Hero Section --- */
+  .hero-container {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 40px 60px !important;
+    gap: 30px !important;
+  }
+  .hero-content {
+    flex: 1.2 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+  .hero-desc {
+    margin-inline: 0 !important;
+    text-align: left !important;
+  }
+  .hero-actions {
+    justify-content: flex-start !important;
+  }
+  .hero-badges {
+    flex: 0.8 !important;
+    display: flex;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    align-items: flex-end !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .hero-badge {
+    width: 220px !important;
+    padding: 12px 16px !important;
+  }
+
+  /* --- Search Bar --- */
+  .hero-search-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    padding: 20px !important;
+    border-radius: var(--radius-lg) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .search-divider {
+    display: none !important;
+  }
+  .search-btn {
+    grid-column: span 2 !important;
+    width: 100% !important;
+    border-radius: 30px !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* --- Destination Grid --- */
+  .destinations .packages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* --- Stats Section --- */
+  .dest-banner-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .banner-stat-card {
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* --- Transport Services --- */
+  .packages .packages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* --- Services Icons --- */
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    justify-items: center !important;
+  }
+  .service-item {
+    width: 100% !important;
+    max-width: 140px !important;
+  }
+
+  /* --- Gallery Masonry --- */
+  .gallery-container {
+    column-count: 2 !important;
+    gap: 16px !important;
+  }
+
+  /* --- Destination details page places --- */
+  .places-section .packages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+/* ═══════════ MOBILE ONLY (320px – 767px) ═══════════ */
+@media (max-width: 767px) {
+  /* --- Hero Section --- */
+  .hero-container {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 90px 16px 30px !important;
+    gap: 24px !important;
+  }
+  .hero-content {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero-title {
+    font-size: 34px !important;
+    margin-bottom: 12px !important;
+    line-height: 1.15 !important;
+  }
+  .hero-desc {
+    font-size: 13.5px !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    padding: 14px 20px !important;
+    font-size: 11px !important;
+  }
+  .hero-badges {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin: 16px 0 0 !important;
+    padding: 10px !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  .hero-badge {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: flex-start !important;
+    padding: 10px 14px !important;
+  }
+
+  /* --- Search Bar --- */
+  .hero-search-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 16px !important;
+    border-radius: var(--radius-lg) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .search-divider {
+    display: none !important;
+  }
+  .search-field {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 8px 0 !important;
+  }
+  .search-btn {
+    width: 100% !important;
+    border-radius: var(--radius-md) !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* --- Destination Grid --- */
+  .destinations .packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .new-dest-card {
+    height: 380px !important;
+  }
+
+  /* --- Stats Section --- */
+  .dest-banner-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .banner-stat-card {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 16px 8px !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+  }
+  .banner-stat-num {
+    font-size: 20px !important;
+  }
+  .banner-stat-label {
+    font-size: 9px !important;
+  }
+
+  /* --- Transport Services Swipe Carousel --- */
+  .packages .packages-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding: 10px 16px 20px !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    box-sizing: border-box !important;
+  }
+  .packages .packages-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .packages .packages-grid {
+    scrollbar-width: none !important;
+  }
+  .packages .package-card {
+    flex: 0 0 280px !important;
+    scroll-snap-align: start !important;
+    height: auto !important;
+  }
+
+  /* --- Services Icons Scrollable Row --- */
+  .services-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding: 12px 16px !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+  }
+  .services-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .services-grid {
+    scrollbar-width: none !important;
+  }
+  .service-item {
+    flex: 0 0 90px !important;
+    scroll-snap-align: center !important;
+    width: auto !important;
+  }
+
+  /* --- Booking Form Stacked --- */
+  .booking-card {
+    padding: 30px 16px !important;
+  }
+  .booking-card h3 {
+    font-size: 26px !important;
+  }
+  .form-group-row {
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-bottom: 14px !important;
+  }
+  .form-input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 18px !important;
+    font-size: 16px !important;
+    height: 48px !important;
+    border-radius: 10px !important;
+  }
+  .form-textarea {
+    min-height: 100px !important;
+    margin-bottom: 20px !important;
+  }
+  .booking-btn {
+    padding: 14px !important;
+    font-size: 16px !important;
+    border-radius: 10px !important;
+  }
+
+  /* --- Newsletter Full Width Stacked --- */
+  .newsletter-card {
+    padding: 30px 16px !important;
+  }
+  .newsletter-card h3 {
+    font-size: 24px !important;
+  }
+  .newsletter-input-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .newsletter-input-group input {
+    padding: 14px 18px !important;
+    padding-right: 18px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: 48px !important;
+  }
+  .newsletter-input-group button {
+    position: static !important;
+    width: 100% !important;
+    padding: 14px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    box-sizing: border-box !important;
+    height: 48px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* --- Accordion Footer --- */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .footer-brand {
+    text-align: center !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .footer-social {
+    justify-content: center !important;
+  }
+  .accordion-header {
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-size: 14px !important;
+  }
+  .footer-links-col h4::after,
+  .footer-contact h4::after {
+    display: none !important;
+  }
+  .accordion-icon {
+    display: inline-block !important;
+    width: 7px !important;
+    height: 7px !important;
+    border-right: 2px solid rgba(255, 255, 255, 0.6) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6) !important;
+    transform: rotate(45deg) !important;
+    transition: transform 0.3s ease !important;
+    margin-right: 8px !important;
+  }
+  .accordion-header.active .accordion-icon {
+    transform: rotate(-135deg) !important;
+  }
+  .footer-accordion-content {
+    max-height: 0;
+    overflow: hidden !important;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease !important;
+    padding: 0 !important;
+  }
+  .footer-accordion-content.open {
+    max-height: 400px !important;
+    padding: 12px 0 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* --- Floating Buttons Optimization --- */
+  .whatsapp-float {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 20px !important;
+    right: 16px !important;
+  }
+  .whatsapp-icon {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .gallery-float {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 80px !important;
+    right: 16px !important;
+  }
+  .gallery-float svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .whatsapp-tooltip {
+    display: none !important;
+  }
+
+  /* --- Gallery Page --- */
+  .gallery-container {
+    column-count: 1 !important;
+    margin: 24px auto !important;
+    padding: 0 16px !important;
+  }
+
+  /* --- Destination details page --- */
+  .dest-hero {
+    height: 40vh !important;
+    min-height: 240px !important;
+  }
+  .dest-hero-content h1 {
+    font-size: 26px !important;
+  }
+  .dest-hero-content p {
+    font-size: 13.5px !important;
+  }
+  .places-section {
+    padding: 30px 0 !important;
+  }
+  .places-section .packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
 }

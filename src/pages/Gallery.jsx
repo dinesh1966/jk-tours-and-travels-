@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import logoImg from '../assets/bg fina one.png';
 
 const galleryItems = [
   { img: 'hero_bg.png', title: 'Sunset Vibes', desc: 'Maldives' },
@@ -47,7 +48,9 @@ const Gallery = () => {
       <header id="header" className="scrolled" style={{ position: 'relative' }}>
         <div className="container nav-container">
           <Link to="/" className="logo-link" id="logo">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels" className="logo-img" />
+            <div className="logo-circle-container">
+              <img src={logoImg} alt="JK Tours & Travels" className="logo-img" />
+            </div>
           </Link>
           <div className="nav-right">
             <Link to="/" className="book-now-btn">← Back to Home</Link>

@@ -1,11 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logoImg from '../assets/bg fina one.png';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [destinationsOpen, setDestinationsOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [activeHash, setActiveHash] = useState('#home');
   const location = useLocation();
+
+  const handleDropdownClick = (e) => {
+    if (window.innerWidth < 1025) {
+      e.preventDefault();
+      e.stopPropagation();
+      setDestinationsOpen(!destinationsOpen);
+    }
+  };
+
+  const handleSubmenuClick = (e, name) => {
+    if (window.innerWidth < 1025) {
+      e.preventDefault();
+      e.stopPropagation();
+      setActiveSubmenu(activeSubmenu === name ? null : name);
+    }
+  };
+
+  const handleNavClick = (e) => {
+    const target = e.target.closest('a');
+    if (target && !target.classList.contains('dropdown-toggle') && !target.classList.contains('submenu-toggle')) {
+      setMenuOpen(false);
+      setDestinationsOpen(false);
+      setActiveSubmenu(null);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +60,8 @@ const Header = () => {
   // Reset menu on route change
   useEffect(() => {
     setMenuOpen(false);
+    setDestinationsOpen(false);
+    setActiveSubmenu(null);
     if (!location.hash) {
       window.scrollTo(0, 0);
     }
@@ -52,20 +82,22 @@ const Header = () => {
     <header id="header" className={scrolled ? 'scrolled' : ''}>
       <div className="container nav-container">
         <Link to="/" className="logo-link" id="logo">
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JK Tours & Travels" className="logo-img" />
+          <div className="logo-circle-container">
+            <img src={logoImg} alt="JK Tours & Travels" className="logo-img" />
+          </div>
         </Link>
 
         <nav>
-          <ul className={`nav-menu ${menuOpen ? 'mobile-open' : ''}`} id="navMenu">
+          <ul className={`nav-menu ${menuOpen ? 'mobile-open' : ''}`} id="navMenu" onClick={handleNavClick}>
             <li className={`nav-item ${isHome && activeHash === '#home' ? 'active' : ''}`}>
               <a href={isHome ? '#home' : '/#home'}>Home</a>
             </li>
-            <li className={`nav-item dropdown ${isHome && activeHash === '#destinations' ? 'active' : ''}`}>
-              <a href={isHome ? '#destinations' : '/#destinations'}>Destinations ▼</a>
-              <ul className="dropdown-menu">
-                <li className="dropdown-submenu">
-                  <Link to="/coimbatore">Coimbatore ▸</Link>
-                  <ul className="dropdown-menu">
+            <li className={`nav-item dropdown ${isHome && activeHash === '#destinations' ? 'active' : ''} ${destinationsOpen ? 'mobile-dropdown-open' : ''}`}>
+              <a href={isHome ? '#destinations' : '/#destinations'} className="dropdown-toggle" onClick={handleDropdownClick}>Destinations ▼</a>
+              <ul className={`dropdown-menu ${destinationsOpen ? 'show-mobile' : ''}`}>
+                <li className={`dropdown-submenu ${activeSubmenu === 'coimbatore' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/coimbatore" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'coimbatore')}>Coimbatore ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'coimbatore' ? 'show-mobile' : ''}`}>
                     <li><Link to="/coimbatore">Adiyogi Shiva Statue</Link></li>
                     <li><Link to="/coimbatore">Marudhamalai Temple</Link></li>
                     <li><Link to="/coimbatore">Perur Pateeswarar Temple</Link></li>
@@ -77,9 +109,9 @@ const Header = () => {
                     <li><Link to="/coimbatore">Monkey Falls</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/ooty">Ooty ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'ooty' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/ooty" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'ooty')}>Ooty ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'ooty' ? 'show-mobile' : ''}`}>
                     <li><Link to="/ooty">Botanical Garden</Link></li>
                     <li><Link to="/ooty">Doddabetta</Link></li>
                     <li><Link to="/ooty">Ooty Lake</Link></li>
@@ -87,9 +119,9 @@ const Header = () => {
                     <li><Link to="/ooty">Rose Garden</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/kodaikanal">Kodaikanal ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'kodaikanal' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/kodaikanal" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'kodaikanal')}>Kodaikanal ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'kodaikanal' ? 'show-mobile' : ''}`}>
                     <li><Link to="/kodaikanal">Kodaikanal Lake</Link></li>
                     <li><Link to="/kodaikanal">Coaker's Walk</Link></li>
                     <li><Link to="/kodaikanal">Bryant Park</Link></li>
@@ -101,9 +133,9 @@ const Header = () => {
                     <li><Link to="/kodaikanal">Green Valley View</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/south-india">South India ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'south-india' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/south-india" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'south-india')}>South India ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'south-india' ? 'show-mobile' : ''}`}>
                     <li><Link to="/south-india">Madurai</Link></li>
                     <li><Link to="/south-india">Thanjavur</Link></li>
                     <li><Link to="/south-india">Kumbakonam</Link></li>
@@ -112,9 +144,9 @@ const Header = () => {
                     <li><Link to="/south-india">Yercaud</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/kerala">Kerala ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'kerala' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/kerala" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'kerala')}>Kerala ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'kerala' ? 'show-mobile' : ''}`}>
                     <li><Link to="/kerala">Munnar</Link></li>
                     <li><Link to="/kerala">Wayanad</Link></li>
                     <li><Link to="/kerala">Varkala</Link></li>
@@ -124,9 +156,9 @@ const Header = () => {
                     <li><Link to="/kerala">Sabarimala Ayyappan Temple</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/karnataka">Karnataka ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'karnataka' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/karnataka" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'karnataka')}>Karnataka ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'karnataka' ? 'show-mobile' : ''}`}>
                     <li><Link to="/karnataka">Coorg</Link></li>
                     <li><Link to="/karnataka">Mysore Palace</Link></li>
                     <li><Link to="/karnataka">Chikmagalur</Link></li>
@@ -138,9 +170,9 @@ const Header = () => {
                     <li><Link to="/karnataka">Murudeshwar Temple</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/goa">Goa ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'goa' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/goa" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'goa')}>Goa ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'goa' ? 'show-mobile' : ''}`}>
                     <li><Link to="/goa">Baga Beach</Link></li>
                     <li><Link to="/goa">Calangute Beach</Link></li>
                     <li><Link to="/goa">Anjuna Beach</Link></li>
@@ -151,9 +183,9 @@ const Header = () => {
                     <li><Link to="/goa">Cabo de Rama Fort</Link></li>
                   </ul>
                 </li>
-                <li className="dropdown-submenu">
-                  <Link to="/pondicherry">Pondicherry ▸</Link>
-                  <ul className="dropdown-menu">
+                <li className={`dropdown-submenu ${activeSubmenu === 'pondicherry' ? 'mobile-submenu-open' : ''}`}>
+                  <Link to="/pondicherry" className="submenu-toggle" onClick={(e) => handleSubmenuClick(e, 'pondicherry')}>Pondicherry ▸</Link>
+                  <ul className={`dropdown-menu ${activeSubmenu === 'pondicherry' ? 'show-mobile' : ''}`}>
                     <li><Link to="/pondicherry">Paradise Beach</Link></li>
                     <li><Link to="/pondicherry">Rock Beach</Link></li>
                     <li><Link to="/pondicherry">Promenade Beach</Link></li>
